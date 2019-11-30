@@ -1,19 +1,46 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+class Text extends Component{
+    render(){
+        const { 
+            arrayOfnumbers,
+            isActivated,  
+            multiply, 
+            objectWithInfo,
+            title
+        } = this.props
+        const textoSegunBool = isActivated ? 'On' : 'Off'
+        const mappedNumber = arrayOfnumbers.map(multiply)
+
+        return (
+            <div>
+                {title}
+                <p>{mappedNumber.join(', ')}</p>
+                <p>{objectWithInfo.key}</p>
+            </div>
+        )
+    }
+}
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          Bienvenidos a este curso.
-        </h1>
-        <h2>Vamos a aprender React.</h2>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1>Bienvenidos a este curso.</h1>
+                <h2>Vamos a aprender React.</h2>
+            </header>
+            <Text 
+            arrayOfnumbers ={[2, 3, 10]}
+            isActivated  
+            multiply = { (number) => number * 4}
+            objectWithInfo = {{ key: 'Fist value', key2 : 'Other value'}}
+            number = {2}
+            title = {<h1>Esto es un título</h1>}
+            />
+        </div>
+    );
 }
 
 export default App;
