@@ -23,6 +23,22 @@ class Text extends Component{
         )
     }
 }
+
+class Contador extends Component {
+    constructor () {
+        super()
+        this.state = {contador: 1}
+        setInterval( () => {
+            this.setState({ contador: this.state.contandor + 1})
+        }, 1000)
+    }
+    render() {
+
+        return <span>{ this.state.contador }</span>
+    }
+}
+
+
 function App() {
     return (
         <div className="App">
@@ -31,6 +47,7 @@ function App() {
                 <h1>Bienvenidos a este curso.</h1>
                 <h2>Vamos a aprender React.</h2>
             </header>
+            <Contador />
             <Text 
             arrayOfnumbers ={[2, 3, 10]}
             isActivated  
